@@ -1,13 +1,12 @@
 package info.tonyl.pokeapi.models;
 
-import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import info.tonyl.pokeapi.core.GsonFactory;
 import info.tonyl.pokeapi.core.PokeApiCaller;
+import info.tonyl.pokeapi.core.PokeApiInterface;
 import lombok.AccessLevel;
 import lombok.Data;
-import lombok.Getter;
 import lombok.Setter;
 
 @Data
@@ -18,12 +17,7 @@ public class ApiResource<T> {
 		this.resourceClass = resourceType;
 	}
 
-	// Don't let them get this. The only reason it's here is for the resolve()
-	// method.
-	@Getter(AccessLevel.NONE)
-	private Gson gson = GsonFactory.get();
-
-	private Class<T> resourceClass;
+	private transient Class<T> resourceClass;
 
 	@SerializedName("name")
 	private String name;
@@ -39,6 +33,10 @@ public class ApiResource<T> {
 	 */
 	public T resolve(PokeApiCaller caller) {
 		String json = caller.getByFullUrl(url);
-		return gson.fromJson(json, resourceClass);
+		return GsonFactory.get().fromJson(json, resourceClass);
+	}
+
+	public T resolve(PokeApiInterface api) {
+		return resolve(api.getApiCaller());
 	}
 }

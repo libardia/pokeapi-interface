@@ -16,11 +16,11 @@ public abstract class PokeApiCaller {
 	private String pokeApiBaseUrl = DEFAULT_POKEAPI_BASE_URL;
 
 	public String get(String endpoint, String id) {
-		return getByFullUrl(PokeApiCaller.makeFullUrl(pokeApiBaseUrl, apiVersion, endpoint, id));
+		return getByFullUrl(makeFullUrl(pokeApiBaseUrl, apiVersion, endpoint, id));
 	}
 
 	public String get(String endpoint) {
-		return getByFullUrl(PokeApiCaller.makeFullUrl(pokeApiBaseUrl, apiVersion, endpoint, ""));
+		return getByFullUrl(makeFullUrl(pokeApiBaseUrl, apiVersion, endpoint, ""));
 	}
 
 	public abstract String getByFullUrl(String url);

@@ -7,11 +7,10 @@ import info.tonyl.pokeapi.models.BerryFirmness;
 
 public class PokeApiInterfaceApp {
 	public static void main(String args[]) {
-		PokeApiInterface api = new PokeApiInterface();
-		api.setApiCaller(new PokeApiCallerSpring());
+		PokeApiInterface api = new PokeApiInterface(new PokeApiCallerSpring());
 
 		Berry b = api.getBerry("cheri");
-		BerryFirmness firmness = b.getFirmness().resolve(api.getApiCaller());
+		BerryFirmness firmness = b.getFirmness().resolve(api);
 
 		System.out.println(b.toString());
 		System.out.println(firmness.toString());
