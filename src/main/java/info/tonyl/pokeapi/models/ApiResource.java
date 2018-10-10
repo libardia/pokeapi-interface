@@ -38,7 +38,7 @@ public class ApiResource<T> {
 	 * @return The object referred to by this resource.
 	 */
 	public T resolve(PokeApiCaller caller) {
-		String json = caller.getByUrl(url);
+		String json = caller.getByFullUrl(url);
 		return gson.fromJson(json, resourceClass);
 	}
 }
