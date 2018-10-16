@@ -26,11 +26,11 @@ public class Berry {
 	@SerializedName("soil_dryness")
 	private Integer soilDryness;
 	@SerializedName("firmness")
-	private ApiResource<BerryFirmness> firmness = new ApiResource<>(BerryFirmness.class);
+	private ApiResource firmness;
 	@SerializedName("flavors")
 	private BerryFlavorMap[] flavors;
 	@SerializedName("item")
-	private ApiResource<Item> item = new ApiResource<>(Item.class);
+	private ApiResource item;
 	@SerializedName("natural_gift_type")
-	private ApiResource<Type> naturalGiftType = new ApiResource<>(Type.class);
+	private ApiResource naturalGiftType;
 }

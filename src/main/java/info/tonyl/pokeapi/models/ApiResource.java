@@ -11,14 +11,7 @@ import lombok.Setter;
 
 @Data
 @Setter(AccessLevel.NONE)
-public class ApiResource<T> {
-	// CONSTRUCTOR -- We must have the class for gson to read it in resolve().
-	public ApiResource(Class<T> resourceType) {
-		this.resourceClass = resourceType;
-	}
-
-	private transient Class<T> resourceClass;
-
+public class ApiResource {
 	@SerializedName("name")
 	private String name;
 	@SerializedName("url")
@@ -31,12 +24,19 @@ public class ApiResource<T> {
 	 *            The PokeApiCaller object to use when resolving.
 	 * @return The object referred to by this resource.
 	 */
-	public T resolve(PokeApiCaller caller) {
-		String json = caller.getByFullUrl(url);
-		return GsonFactory.get().fromJson(json, resourceClass);
+	public <T> T resolve(PokeApiCaller caller, Class<T> resourceClass) {
+		return GsonFactory.get().fromJson(resolve(caller), resourceClass);
 	}
 
-	public T resolve(PokeApiInterface api) {
+	public String resolve(PokeApiCaller caller) {
+		return caller.getByFullUrl(url);
+	}
+
+	public <T> T resolve(PokeApiInterface api, Class<T> resourceClass) {
+		return resolve(api.getApiCaller(), resourceClass);
+	}
+
+	public String resolve(PokeApiInterface api) {
 		return resolve(api.getApiCaller());
 	}
 }

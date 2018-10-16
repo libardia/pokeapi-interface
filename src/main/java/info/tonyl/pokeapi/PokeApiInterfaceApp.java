@@ -10,7 +10,7 @@ public class PokeApiInterfaceApp {
 		PokeApiInterface api = new PokeApiInterface(new PokeApiCallerSpring());
 
 		Berry b = api.getBerry("cheri");
-		BerryFirmness firmness = b.getFirmness().resolve(api);
+		BerryFirmness firmness = (BerryFirmness) b.getFirmness().resolve(api, BerryFirmness.class);
 
 		System.out.println(b.toString());
 		System.out.println(firmness.toString());
