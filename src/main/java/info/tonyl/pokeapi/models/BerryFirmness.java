@@ -2,6 +2,7 @@ package info.tonyl.pokeapi.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import info.tonyl.pokeapi.annotations.ResourceClass;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
@@ -14,7 +15,8 @@ public class BerryFirmness {
 	@SerializedName("name")
 	private String name;
 	@SerializedName("berries")
-	private ApiResource[] berries;
+	@ResourceClass(Berry.class)
+	private ApiResource<Berry>[] berries;
 	@SerializedName("names")
 	private Name[] names;
 }
