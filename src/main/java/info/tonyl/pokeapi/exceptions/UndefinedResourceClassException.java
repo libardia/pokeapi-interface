@@ -1,6 +1,6 @@
 package info.tonyl.pokeapi.exceptions;
 
-import info.tonyl.pokeapi.models.ApiResource;
+import info.tonyl.pokeapi.models.utility.ApiResource;
 
 public class UndefinedResourceClassException extends RuntimeException {
 	private static final long serialVersionUID = 7641793669073849082L;

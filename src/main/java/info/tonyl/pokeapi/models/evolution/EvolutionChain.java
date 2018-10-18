@@ -1,8 +1,10 @@
-package info.tonyl.pokeapi.models;
+package info.tonyl.pokeapi.models.evolution;
 
 import com.google.gson.annotations.SerializedName;
 
 import info.tonyl.pokeapi.annotations.ResourceClass;
+import info.tonyl.pokeapi.models.items.Item;
+import info.tonyl.pokeapi.models.utility.ApiResource;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;

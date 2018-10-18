@@ -1,4 +1,4 @@
-package info.tonyl.pokeapi.models;
+package info.tonyl.pokeapi.models.items;
 
 import com.google.gson.annotations.SerializedName;
 

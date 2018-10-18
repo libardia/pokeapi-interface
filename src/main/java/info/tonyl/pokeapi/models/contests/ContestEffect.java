@@ -1,7 +1,9 @@
-package info.tonyl.pokeapi.models;
+package info.tonyl.pokeapi.models.contests;
 
 import com.google.gson.annotations.SerializedName;
 
+import info.tonyl.pokeapi.models.utility.Effect;
+import info.tonyl.pokeapi.models.utility.FlavorText;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;

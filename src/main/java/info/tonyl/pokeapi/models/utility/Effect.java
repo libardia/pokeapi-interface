@@ -1,4 +1,4 @@
-package info.tonyl.pokeapi.models;
+package info.tonyl.pokeapi.models.utility;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -9,15 +9,11 @@ import lombok.Setter;
 
 @Data
 @Setter(AccessLevel.NONE)
-public class ContestName {
-	@SerializedName("name")
-	private String name;
-
-	@SerializedName("color")
-	private String color;
+public class Effect {
+	@SerializedName("effect")
+	private String effect;
 
 	@SerializedName("language")
 	@ResourceClass(Language.class)
 	private ApiResource<Language> language;
-
 }

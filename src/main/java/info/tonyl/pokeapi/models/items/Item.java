@@ -1,8 +1,15 @@
-package info.tonyl.pokeapi.models;
+package info.tonyl.pokeapi.models.items;
 
 import com.google.gson.annotations.SerializedName;
 
 import info.tonyl.pokeapi.annotations.ResourceClass;
+import info.tonyl.pokeapi.models.evolution.EvolutionChain;
+import info.tonyl.pokeapi.models.utility.ApiResource;
+import info.tonyl.pokeapi.models.utility.GenerationGameIndex;
+import info.tonyl.pokeapi.models.utility.MachineVersionDetail;
+import info.tonyl.pokeapi.models.utility.Name;
+import info.tonyl.pokeapi.models.utility.VerboseEffect;
+import info.tonyl.pokeapi.models.utility.VersionGroupFlavorText;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;

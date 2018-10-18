@@ -1,4 +1,4 @@
-package info.tonyl.pokeapi.models;
+package info.tonyl.pokeapi.models.utility;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -9,11 +9,15 @@ import lombok.Setter;
 
 @Data
 @Setter(AccessLevel.NONE)
-public class Effect {
+public class VerboseEffect {
 	@SerializedName("effect")
 	private String effect;
+
+	@SerializedName("short_effect")
+	private String shortEffect;
 
 	@SerializedName("language")
 	@ResourceClass(Language.class)
 	private ApiResource<Language> language;
+
 }

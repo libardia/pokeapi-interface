@@ -1,4 +1,4 @@
-package info.tonyl.pokeapi.models;
+package info.tonyl.pokeapi.models.utility;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -9,13 +9,10 @@ import lombok.Setter;
 
 @Data
 @Setter(AccessLevel.NONE)
-public class VersionGroupFlavorText {
-	@SerializedName("text")
-	private String text;
-
-	@SerializedName("language")
-	@ResourceClass(Language.class)
-	private ApiResource<Language> language;
+public class MachineVersionDetail {
+	@SerializedName("machine")
+	@ResourceClass(Machine.class)
+	private ApiResource<Machine> machine;
 
 	@SerializedName("version_group")
 	@ResourceClass(VersionGroup.class)

@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 import info.tonyl.pokeapi.annotations.ResourceClass;
 import info.tonyl.pokeapi.exceptions.ApiResourceScannerException;
 import info.tonyl.pokeapi.exceptions.ResourceClassOnWrongTypeException;
-import info.tonyl.pokeapi.models.ApiResource;
+import info.tonyl.pokeapi.models.utility.ApiResource;
 
 public class ApiResourceScanner {
 	// Shut up Eclipse, I'm catching ClassCastExceptions.

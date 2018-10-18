@@ -5,9 +5,9 @@ import java.util.List;
 
 import info.tonyl.pokeapi.core.PokeApiInterface;
 import info.tonyl.pokeapi.core.impl.PokeApiCallerSpring;
-import info.tonyl.pokeapi.models.ApiResource;
-import info.tonyl.pokeapi.models.Berry;
-import info.tonyl.pokeapi.models.BerryFirmness;
+import info.tonyl.pokeapi.models.berries.Berry;
+import info.tonyl.pokeapi.models.berries.BerryFirmness;
+import info.tonyl.pokeapi.models.utility.ApiResource;
 
 public class PokeApiInterfaceApp {
 	public static void main(String args[]) {

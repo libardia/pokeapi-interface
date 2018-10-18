@@ -1,7 +1,7 @@
 package info.tonyl.pokeapi.core;
 
 import info.tonyl.pokeapi.constants.PokeApiEndpoint;
-import info.tonyl.pokeapi.models.Berry;
+import info.tonyl.pokeapi.models.berries.Berry;
 import lombok.Getter;
 import lombok.Setter;
 

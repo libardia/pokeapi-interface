@@ -1,4 +1,4 @@
-package info.tonyl.pokeapi.models;
+package info.tonyl.pokeapi.models.utility;
 
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.annotations.SerializedName;

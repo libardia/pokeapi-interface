@@ -1,28 +1,27 @@
-package info.tonyl.pokeapi.models;
+package info.tonyl.pokeapi.models.contests;
 
 import com.google.gson.annotations.SerializedName;
 
 import info.tonyl.pokeapi.annotations.ResourceClass;
+import info.tonyl.pokeapi.models.berries.BerryFlavor;
+import info.tonyl.pokeapi.models.utility.ApiResource;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
 
 @Data
 @Setter(AccessLevel.NONE)
-public class BerryFlavor {
+public class ContestType {
 	@SerializedName("id")
 	private Integer id;
 
 	@SerializedName("name")
 	private String name;
 
-	@SerializedName("berries")
-	private FlavorBerryMap[] berries;
-
-	@SerializedName("contest_type")
-	@ResourceClass(ContestType.class)
-	private ApiResource<ContestType> contest_type;
+	@SerializedName("berry_flavor")
+	@ResourceClass(BerryFlavor.class)
+	private ApiResource<BerryFlavor> berryFlavor;
 
 	@SerializedName("names")
-	private Name[] names;
+	private ContestName[] names;
 }
