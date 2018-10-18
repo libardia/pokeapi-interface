@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,51 +13,51 @@ public class ModelGenerator {
 	public static final String INPUT_FILENAME = "modelInput.txt";
 
 	public static void main(String[] args) throws IOException {
-		Scanner s = new Scanner(System.in);
-		System.out.println("Model name?");
-		String name = s.nextLine();
-		s.close();
-
 		BufferedReader input = new BufferedReader(new FileReader(loadOrMake(INPUT_FILENAME)));
-		BufferedWriter output = new BufferedWriter(new FileWriter(new File(name + ".java")));
+		String name;
+		while ((name = input.readLine()) != null) {
+			BufferedWriter output = new BufferedWriter(new FileWriter(new File(name + ".java")));
 
-		output.write("package info.tonyl.pokeapi.models;\n\n");
-		output.write("import com.google.gson.annotations.SerializedName;\n\n");
-		output.write("import info.tonyl.pokeapi.annotations.ResourceClass;\n");
-		output.write("import lombok.AccessLevel;\n");
-		output.write("import lombok.Data;\n");
-		output.write("import lombok.Setter;\n");
-		output.write("\n@Data\n@Setter(AccessLevel.NONE)\npublic class ");
-		output.write(name);
-		output.write(" {\n");
+			output.write("package info.tonyl.pokeapi.models;\n\n");
+			output.write("import com.google.gson.annotations.SerializedName;\n\n");
+			output.write("import info.tonyl.pokeapi.annotations.ResourceClass;\n");
+			output.write("import lombok.AccessLevel;\n");
+			output.write("import lombok.Data;\n");
+			output.write("import lombok.Setter;\n");
+			output.write("\n@Data\n@Setter(AccessLevel.NONE)\npublic class ");
+			output.write(name);
+			output.write(" {\n");
 
-		String line;
-		while ((line = input.readLine()) != null) {
-			System.out.println("Input line:");
-			System.out.println(line);
+			String line = input.readLine();
+			while (line != null && !line.startsWith("~")) {
+				System.out.println("Input line:");
+				System.out.println(line);
 
-			StringBuilder outline = new StringBuilder();
-			String[] tokens = line.split("\t");
+				StringBuilder outline = new StringBuilder();
+				String[] tokens = line.split("\t");
 
-			outline.append("\t@SerializedName(\"" + tokens[0] + "\")\n");
-			outline.append(resourceClassAnnotation(tokens[2]));
-			outline.append("\tprivate ");
-			outline.append(getTypeName(tokens[2]));
-			outline.append(" ");
-			outline.append(camelCase(tokens[0]));
-			outline.append(";\n\n");
+				outline.append("\t@SerializedName(\"" + tokens[0] + "\")\n");
+				outline.append(resourceClassAnnotation(tokens[2]));
+				outline.append("\tprivate ");
+				outline.append(getTypeName(tokens[2]));
+				outline.append(" ");
+				outline.append(camelCase(tokens[0]));
+				outline.append(";\n\n");
 
-			System.out.println("Output block:");
-			System.out.println(outline);
+				System.out.println("Output block:");
+				System.out.println(outline);
 
-			output.write(outline.toString());
+				output.write(outline.toString());
+
+				line = input.readLine();
+			}
+
+			output.write("}");
+			output.flush();
+			output.close();
 		}
 
-		output.write("}");
-
 		input.close();
-		output.flush();
-		output.close();
 	}
 
 	private static String camelCase(String str) {
