@@ -14,7 +14,9 @@ public class UndefinedResourceClassException extends RuntimeException {
 
 		sb.append("ApiResource with name ");
 		sb.append(apiResource.getName());
-		sb.append(" has no associated resourceClass, but resolve was called without a class argument.");
+		sb.append(" has no associated resourceClass, but resolve was called without ");
+		sb.append("a class argument. Use one of the resolve methods that takes a class ");
+		sb.append("argument.");
 
 		return sb.toString();
 	}
