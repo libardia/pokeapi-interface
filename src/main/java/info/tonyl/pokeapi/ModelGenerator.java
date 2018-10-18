@@ -93,7 +93,8 @@ public class ModelGenerator {
 
 	private static String getTypeName(String str) {
 		final String LIST_PREFIX = "list ";
-		final String RESOURCE_PREFIX = "NamedAPIResource (";
+		final String NAMED_RESOURCE_PREFIX = "NamedAPIResource (";
+		final String RESOURCE_PREFIX = "APIResource (";
 
 		Pattern resourcePattern = Pattern.compile("\\((.*)\\)");
 
@@ -103,7 +104,7 @@ public class ModelGenerator {
 			str = str.substring(LIST_PREFIX.length());
 			result += getTypeName(str);
 			result += "[]";
-		} else if (str.startsWith(RESOURCE_PREFIX)) {
+		} else if (str.startsWith(NAMED_RESOURCE_PREFIX) || str.startsWith(RESOURCE_PREFIX)) {
 			Matcher m = resourcePattern.matcher(str);
 			m.find();
 			result += "ApiResource<";
