@@ -6,16 +6,31 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ModelGenerator {
 	public static final String INPUT_FILENAME = "modelInput.txt";
-	public static final String OUTPUT_FILENAME = "modelOutput.txt";
 
 	public static void main(String[] args) throws IOException {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Model name?");
+		String name = s.nextLine();
+		s.close();
+
 		BufferedReader input = new BufferedReader(new FileReader(loadOrMake(INPUT_FILENAME)));
-		BufferedWriter output = new BufferedWriter(new FileWriter(new File(OUTPUT_FILENAME)));
+		BufferedWriter output = new BufferedWriter(new FileWriter(new File(name + ".java")));
+
+		output.write("package info.tonyl.pokeapi.models;\n\n");
+		output.write("import com.google.gson.annotations.SerializedName;\n\n");
+		output.write("import info.tonyl.pokeapi.annotations.ResourceClass;\n");
+		output.write("import lombok.AccessLevel;\n");
+		output.write("import lombok.Data;\n");
+		output.write("import lombok.Setter;\n");
+		output.write("\n@Data\n@Setter(AccessLevel.NONE)\npublic class ");
+		output.write(name);
+		output.write(" {\n");
 
 		String line;
 		while ((line = input.readLine()) != null) {
@@ -25,9 +40,9 @@ public class ModelGenerator {
 			StringBuilder outline = new StringBuilder();
 			String[] tokens = line.split("\t");
 
-			outline.append("@SerializedName(\"" + tokens[0] + "\")\n");
+			outline.append("\t@SerializedName(\"" + tokens[0] + "\")\n");
 			outline.append(resourceClassAnnotation(tokens[2]));
-			outline.append("private ");
+			outline.append("\tprivate ");
 			outline.append(getTypeName(tokens[2]));
 			outline.append(" ");
 			outline.append(camelCase(tokens[0]));
@@ -38,6 +53,8 @@ public class ModelGenerator {
 
 			output.write(outline.toString());
 		}
+
+		output.write("}");
 
 		input.close();
 		output.flush();
@@ -68,7 +85,7 @@ public class ModelGenerator {
 		String result = "";
 
 		if (m.find()) {
-			result = "@ResourceClass(" + m.group(1) + ".class)\n";
+			result = "\t@ResourceClass(" + m.group(1) + ".class)\n";
 		}
 
 		return result;
