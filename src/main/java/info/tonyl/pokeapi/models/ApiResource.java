@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import info.tonyl.pokeapi.core.Deserializer;
 import info.tonyl.pokeapi.core.PokeApiCaller;
 import info.tonyl.pokeapi.core.PokeApiInterface;
+import info.tonyl.pokeapi.exceptions.UndefinedResourceClassException;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
@@ -20,16 +21,16 @@ public class ApiResource<T> {
 	@SerializedName("url")
 	private String url;
 
-	/**
-	 * Resolves the object referred to by this ApiResource.
-	 * 
-	 * @param api
-	 *            The PokeApiCaller object to use when resolving.
-	 * @return The object referred to by this resource.
-	 */
 	public T resolve(PokeApiCaller caller) {
-		// TODO: Throw exception if resourceClass isn't set
+		if (resourceClass == null) {
+			throw new UndefinedResourceClassException(this);
+		}
+
 		return Deserializer.fromJson(caller.getByFullUrl(url), resourceClass);
+	}
+
+	public <U> U resolve(PokeApiCaller caller, Class<U> classOfU) {
+		return Deserializer.fromJson(caller.getByFullUrl(url), classOfU);
 	}
 
 	public T resolve(PokeApiInterface api) {

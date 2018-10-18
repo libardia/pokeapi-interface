@@ -13,7 +13,7 @@ public class PokeApiInterfaceApp {
 	public static void main(String args[]) {
 		PokeApiInterface api = new PokeApiInterface(new PokeApiCallerSpring());
 
-		Berry b = api.getBerry("cheri");
+		Berry b = api.getBerry(10);
 		BerryFirmness firmness = b.getFirmness().resolve(api);
 
 		System.out.println(b.toString());
@@ -25,8 +25,8 @@ public class PokeApiInterfaceApp {
 		}
 
 		System.out.println("All " + firmness.getName() + " berries:");
-		System.out.println(berries.toString());
-
-		// TODO: test new "resolve" strategy on ApiResources
+		for (Berry berry : berries) {
+			System.out.println(berry.toString());
+		}
 	}
 }
