@@ -3,4 +3,5 @@ target
 bin
 .classpath
 .project
-
+modelInput.txt
+modelOutput.txt

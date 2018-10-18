@@ -1,5 +1,8 @@
 package info.tonyl.pokeapi.models;
 
+import com.google.gson.annotations.SerializedName;
+
+import info.tonyl.pokeapi.annotations.ResourceClass;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
@@ -7,5 +10,10 @@ import lombok.Setter;
 @Data
 @Setter(AccessLevel.NONE)
 public class FlavorBerryMap {
-	// TODO: Model stub
+	@SerializedName("potency")
+	private Integer potency;
+
+	@SerializedName("berry")
+	@ResourceClass(Berry.class)
+	private ApiResource<Berry> berry;
 }
