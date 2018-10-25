@@ -1,0 +1,39 @@
+MODEL LIST
+
+Berries (DONE)
+X	Berry
+X	BerryFirmness
+X	BerryFlavor
+X	BerryFlavorMap
+X	FlavorBerryMap
+Contests
+X	ContestType
+X	ContestName
+X	ContestEffect
+	SuperContestEffect
+Encounters
+	EncounterMethod
+	EncounterCondition
+	EncounterConditionValue
+Evolution
+X	EvolutionChain
+X	ChainLink
+X	EvolutionDetail
+	EvolutionTrigger
+Games
+	Generation
+	Pokedex
+	PokemonEntry
+X	Version
+X	VersionGroup
+Items (DONE)
+X	Item
+X	ItemSprites
+X	ItemHolderPokemon
+X	ItemHolderPokemonVersionDetail
+X	ItemAttribute
+X	ItemCategory
+X	ItemFlingEffect
+X	ItemPocket
+Locations
+	...
