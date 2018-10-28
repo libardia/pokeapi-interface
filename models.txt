@@ -36,4 +36,24 @@ X	ItemCategory
 X	ItemFlingEffect
 X	ItemPocket
 Locations
-	...
+	Location
+	LocationArea
+	EncounterMethodRate
+	EncounterVersionDetails
+	PokemonEncounter
+	PalParkArea
+	PalParkEncounterSpecies
+	Region
+Machines
+	Machine
+Moves
+	Move
+	ContestComboSets
+	ContestComboDetail
+	MoveFlavorText
+	MoveAilment
+	MoveStatChange
+	PastMoveStatValues
+MoveAilments
+	MoveAilment (!?)
+	
